@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>抽签</title>
+    <style>
+      #btn {
+        width: 48px;
+        border-radius: 4px;
+        border:none;
+        background-color: salmon;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        color: #fff;
+      }
+
+      #btn:hover {
+        background-color: salmon;
+        opacity: 0.9;
+      }
+
+      thead {
+        color: #333;
+        font-weight: bold;
+      }
+
+      #tbody {
+        color: #666;
+        font-weight: normal;
+      }
+
+      tr {
+        
+      }
+      td { 
+        border: none; 
+        border-bottom: 1px solid #ececec;
+        height: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">抽签</button>
+    <table border="1" style="margin-top: 10px; border:1px solid #ececec; text-align: center" width="500px">
+      <thead>
+        <tr>
+          <td>工号</td>
+          <td>姓名</td>
+          <td>序号</td>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </body>
+  <script>
+    const data = [
+      {
+        id: 'xx',
+        name: 'xx',
+        oldIdx: '0',
+        newIdx: ''
+      },
+{
+        id: 'xx',
+        name: 'xx',
+        oldIdx: '0',
+        newIdx: ''
+      },
+{
+        id: 'xx',
+        name: 'xx',
+        oldIdx: '0',
+        newIdx: ''
+      },
+{
+        id: 'xx',
+        name: 'xx',
+        oldIdx: '0',
+        newIdx: ''
+      }
+    ];
+    let btn = document.getElementById("btn");
+    let tbody = document.getElementById("tbody");
+    btn.addEventListener("click",()=>{
+      data.sort(()=>0.5 - Math.random());
+      for(let i=0; i<data.length; i++) {
+        data[i]['newIdx'] = i;
+      };
+      console.log(data);
+      let html = ``;
+      data.forEach(item=>{
+        return html += `<tr>
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.newIdx + 1}</td>
+        </tr>`
+      });
+
+      tbody.innerHTML = html;
+    });
+  </script>
+</html>
